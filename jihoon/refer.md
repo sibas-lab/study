@@ -14,3 +14,9 @@ https://www-dbpia-co-kr.libproxy.donga.ac.kr/pdf/pdfView.do?nodeId=NODE11554758
  [4] Liang-Chieh Chen and George Papandreou and Iasonas Kokkinosand Kevin Murphy and Alan L. Yuille (2017), “DeepLab: SemanticImage Segmentation with Deep Convolutional Nets, AtrousConvolution, and Fully Connected CRFs”
  
  [5] Jonathan Long and Evan Shelhamer and Trevor Darrell (2015),“Fully Convolutional Networks for Semantic Segmentation”
+
+제안
+우선 이사람의 내용과 설명을 읽어보고 코드를 뜯어보며 이론을 공부하면서 구현하기
+이거를 5월말 까지 다해서 구현 완료하고 1달동안 프로토 타입을 만들기
+https://github.com/justjoshtings/satellite_image_segmentation 깃헙 주소
+https://joshting.medium.com/satellite-imagery-segmentation-with-convolutional-neural-networks-f9254de3b907 개념 설명
