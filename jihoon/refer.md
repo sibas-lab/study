@@ -20,3 +20,6 @@ https://www-dbpia-co-kr.libproxy.donga.ac.kr/pdf/pdfView.do?nodeId=NODE11554758
 이거를 5월말 까지 다해서 구현 완료하고 1달동안 프로토 타입을 만들기
 https://github.com/justjoshtings/satellite_image_segmentation 깃헙 주소
 https://joshting.medium.com/satellite-imagery-segmentation-with-convolutional-neural-networks-f9254de3b907 개념 설명
+
+FCN 설명 잘 되있는 블로그 및 비젼 관련 참고 하기 좋은 블로그
+https://gaussian37.github.io/vision-segmentation-fcn/
