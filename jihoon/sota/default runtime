@@ -4,14 +4,14 @@
 
 ## 기본 설정
 
-```yaml
+```
 default_scope: 'mmseg'
 ```
 - `default_scope`는 모델의 기본 범위를 정의합니다. 이 경우 `'mmseg'`로 설정되어 있어, 멀티모달 세그멘테이션에 관련된 설정임을 나타냅니다.
 
 ## 환경 설정 (`env_cfg`)
 
-```yaml
+```
 env_cfg:
   cudnn_benchmark: True
   mp_cfg:
@@ -29,7 +29,7 @@ env_cfg:
 
 ## 시각화 설정
 
-```yaml
+```
 vis_backends:
   - type: 'LocalVisBackend'
 visualizer:
@@ -43,7 +43,7 @@ visualizer:
 
 ## 로깅 설정
 
-```yaml
+```
 log_processor:
   by_epoch: False
 log_level: 'INFO'
@@ -54,7 +54,7 @@ log_level: 'INFO'
 
 ## 학습 재개 설정
 
-```yaml
+```
 Load_from: None
 resume: False
 ```
