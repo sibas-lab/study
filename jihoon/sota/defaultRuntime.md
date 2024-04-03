@@ -12,13 +12,12 @@ default_scope: 'mmseg'
 ## 환경 설정 (`env_cfg`)
 
 ```
-env_cfg:
-  cudnn_benchmark: True
-  mp_cfg:
-    mp_start_method: 'fork'
-    opencv_num_threads: 0
-  dist_cfg:
-    backend: 'nccl'
+env_cfg = dict(
+    cudnn_benchmark=True,
+    mp_cfg=dict(mp_start_method='fork', opencv_num_threads=0),
+    dist_cfg=dict(backend='nccl'),
+)
+
 ```
 
 - `cudnn_benchmark`: 모델의 학습 속도를 향상시키기 위해 설정됩니다.
@@ -30,12 +29,9 @@ env_cfg:
 ## 시각화 설정
 
 ```
-vis_backends:
-  - type: 'LocalVisBackend'
-visualizer:
-  type: 'SegLocalVisualizer'
-  vis_backends: vis_backends
-  name: 'visualizer'
+vis_backends:[dict(type: 'LocalVisBackend')]
+visualizerdict(
+    type='SegLocalVisualizer', vis_backends=vis_backends, name='visualizer')
 ```
 
 - `LocalVisBackend`는 로컬 시스템에서 시각화를 수행하는 백엔드 유형을 의미합니다.
@@ -44,9 +40,8 @@ visualizer:
 ## 로깅 설정
 
 ```
-log_processor:
-  by_epoch: False
-log_level: 'INFO'
+log_processor = dict(by_epoch=False)
+log_level = 'INFO'
 ```
 
 - `by_epoch: False`는 로그가 에폭(epoch) 단위가 아니라 반복(iteration) 단위로 기록되도록 합니다.
@@ -55,8 +50,8 @@ log_level: 'INFO'
 ## 학습 재개 설정
 
 ```
-Load_from: None
-resume: False
+log_processor = dict(by_epoch=False)
+log_level = 'INFO'
 ```
 
 - `load_from: None`은 특정 체크포인트에서 모델을 로드하지 않고 처음부터 학습을 시작하겠다는 의미입니다.
