@@ -52,7 +52,29 @@ param_scheduler = [
   - **T_max**와 **begin**, **end**: 이 스케줄러의 주기와 시작 및 종료 시점을 나타냅니다.
 
 
+
 ### 학습 일정 설정 (train_cfg, val_cfg, test_훅
+### default훅
+
+```yaml
+# training schedule for 80k
+train_cfg = dict(type='IterBasedTrainLoop', max_iters=80000, val_interval=20000)
+val_cfg = dict(type='ValLoop')
+test_cfg = dict(type='TestLoop')
+default_hooks = dict(
+    timer=dict(type='IterTimerHook'),
+    logger=dict(type='LoggerHook', interval=50, log_metric_by_epoch=False),
+    param_scheduler=dict(type='ParamSchedulerHook'),
+    checkpoint=dict(type='CheckpointHook', by_epoch=False, interval=5000),
+    sampler_seed=dict(type='DistSamplerSeedHook'),
+    visualization=dict(type='SegVisualizationHook', draw=True, interval=1))
+
+```
+- **train_cfg**:
+- **type**: 'IterBasedTrainLoop'은 반복 기반 학습 루프를 의미합니다.
+- **max_iters**: 80000은 총 학습 반복 횟수입니다.
+- **val_interval**: 20000은 검증을 수행할 반복 횟수 간격입니다.
+- **val_cfg**와 **test_cfg**: 각각 검증 및 테스트 루프 설정을 나타냅니다. 여기서는 특별한 추가 설정 없이 기본 구조를 따릅니다.
 - **timer**: `'IterTimerHook'`은 각 학습 반복의 시간을 측정합니다.
 - **logger**: `'LoggerHook'`은 지정된 간격(`interval=50`)마다 학습 로그를 기록합니다.
 - **param_scheduler**: `'ParamSchedulerHook'`은 위에서 정의된 학습률 스케줄러를 관
