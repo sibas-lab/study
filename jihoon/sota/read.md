@@ -2,6 +2,6 @@
 
 모델 구성
 
-| Pretrain | Dataset |	Backbone |	Method |	mIOU |
-
-| MAE + MTP |	SpaceNetv1 |	ViT-B＋RVSA |	UperNet	79.63 |
+| Pretrain | Dataset |	Backbone |	Method |
+|----------|---------|------------|-------|
+| MAE + MTP |	SpaceNetv1 |	ViT-B＋RVSA |	UperNet |
