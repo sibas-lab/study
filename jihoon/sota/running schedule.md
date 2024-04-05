@@ -1,4 +1,6 @@
 이 섹션은 모델의 학습 일정, 옵티마이저, 스케줄러 설정, 그리고 학습 도중 사용할 다양한 훅들에 대한 설정을 포함하고 있습니다. 각 구성 요소를 자세히 살펴보겠습니다.
+### 옵티마이저 설정 (optim_wrapper)
+
 ```yaml
 # optimizer
 
@@ -12,7 +14,6 @@ optim_wrapper = dict(
         )
         )
 ```
-### 옵티마이저 설정 (optim_wrapper)
 
 - **옵티마이저**: 
   - **type**: `'AdamW'`는 Adam 옵티마이저의 변형으로, 가중치 감소(weight decay) 전략을 개선한 버전입니다.
@@ -23,6 +24,8 @@ optim_wrapper = dict(
 - **paramwise_cfg**: 
   - **num_layers**: `12`는 모델의 총 레이어 수입니다.
   - **layer_decay_rate**: `0.9`는 더 깊은 레이어로 갈수록 학습률을 감소시키는 비율입니다.
+
+### 학습률 스케줄러 설정 (param_scheduler)
 
 ```yaml
 param_scheduler = [
@@ -39,8 +42,6 @@ param_scheduler = [
 ]
 ```
 
-### 학습률 스케줄러 설정 (param_scheduler)
-
 - **LinearLR**:
   - **type**: `'LinearLR'`는 학습 초기에 학습률을 선형적으로 증가시키는 스케줄러입니다.
   - **start_factor**: `1e-6`은 초기 학습률에 곱해지는 시작 인자입니다.
@@ -50,38 +51,8 @@ param_scheduler = [
   - **eta_min**: 최소 학습률로, 여기서는 `0.0`입니다.
   - **T_max**와 **begin**, **end**: 이 스케줄러의 주기와 시작 및 종료 시점을 나타냅니다.
 
-### 학습 일정 설정 (train_cfg, val_cfg, test_cfg)
 
-
-
-```yaml
-# training schedule for 80k
-train_cfg = dict(type='IterBasedTrainLoop', max_iters=80000, val_interval=20000)
-val_cfg = dict(type='ValLoop')
-test_cfg = dict(type='TestLoop')
-default_hooks = dict(
-    timer=dict(type='IterTimerHook'),
-    logger=dict(type='LoggerHook', interval=50, log_metric_by_epoch=False),
-    param_scheduler=dict(type='ParamSchedulerHook'),
-    checkpoint=dict(type='CheckpointHook', by_epoch=False, interval=5000),
-    sampler_seed=dict(type='DistSamplerSeedHook'),
-    visualization=dict(type='SegVisualizationHook', draw=True, interval=1))
-```
-
-
-
-- **train_cfg**:
-  - **type**: `'IterBasedTrainLoop'`은 반복 기반 학습 루프를 의미합니다.
-  - **max_iters**: `80000`은 총 학습 반복 횟수입니다.
-  - **val_interval**: `20000`은 검증을 수행할 반복 횟수 간격입니다.
-- **val_cfg**와 **test_cfg**: 각각 검증 및 테스트 루프 설정을 나타냅니다. 여기서는 특별한 추가 설정 없이 기본 구조를 따릅니다.
-
-
-
-
-
-### 기본 훅 설정 (default_hooks)
-
+### 학습 일정 설정 (train_cfg, val_cfg, test_훅
 - **timer**: `'IterTimerHook'`은 각 학습 반복의 시간을 측정합니다.
 - **logger**: `'LoggerHook'`은 지정된 간격(`interval=50`)마다 학습 로그를 기록합니다.
 - **param_scheduler**: `'ParamSchedulerHook'`은 위에서 정의된 학습률 스케줄러를 관
