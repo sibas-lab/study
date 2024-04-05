@@ -49,6 +49,22 @@ python -u tools/train.py configs/mtp/spacenetv1/rvsa-b-upernet-384-mae-mtp-space
 
 
 #두번째 폴더 : Multi_Task_Pretrain
+-1. instance_segmentation
+-- __init__.py : 
 
+         two_stage.py: 두 단계로 객체를 감지하는 알고리즘을 구현한 모듈일 수 있습니다. 여기서 두 단계는 일반적으로 후보 영역(proposal) 생성과 객체 분류 및 바운딩 박스          (bounding box) 조정을 의미합니다.
+         
+         mask_rcnn.py: Mask R-CNN 알고리즘을 구현한 모듈일 수 있습니다. 이는 객체의 분류, 
+         위치 식별 뿐만 아니라 객체의 정확한 픽셀 단위 마스크를 생성하는 데 사용됩니다.
+         
+         rpn_head.py: Region Proposal Network(RPN)의 핵심 컴포넌트를 구현한 모듈일 수 있습니다. 이는 객체 후보 영역을 식별하는 데 사용됩니다.
+         
+         roi_head.py: 관심 영역(Region of Interest, ROI) 처리를 위한 핵심 컴포넌트를 구현한 모듈일 수 있습니다.
+         
+         bbox_head.py: 바운딩 박스 회귀(bounding box regression)와 관련된 기능을 구현한 모듈일 수 있습니다.
+         
+         mask_head.py: 객체의 마스크 생성과 관련된 기능을 구현한 모듈일 수 있습니다.
+         
+         
 
 
